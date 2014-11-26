@@ -35,19 +35,29 @@ namespace RomanConverter
             Assert.AreEqual("C", ConvertToRoman(100));
             Assert.AreEqual("D", ConvertToRoman(500));
             Assert.AreEqual("M", ConvertToRoman(1000));
+
+            Assert.AreEqual("XLII", ConvertToRoman(42));
+            Assert.AreEqual("MMXIV", ConvertToRoman(2014));
+            Assert.AreEqual("MCMXCIX", ConvertToRoman(1999));
+            Assert.AreEqual("DCLXVI", ConvertToRoman(666));
+            Assert.AreEqual("CDXLIV", ConvertToRoman(444));
         }
 
         private Dictionary<int, string> dict = new Dictionary<int, string>()
         {
-            {1000, "M"},
-            {500, "D"},
-            {100, "C"},
-            {50, "L"},
-            {10, "X"},
-            {9, "IX"},
-            {5, "V"},
-            {4, "IV"},
-            {1, "I"}
+			{1000, "M"},
+			{900, "CM"},
+			{500, "D"},
+			{400, "CD"},
+			{100, "C"},
+			{90, "XC"},
+			{50, "L"},
+			{40, "XL"},
+			{10, "X"},
+			{9, "IX"},
+			{5, "V"},
+			{4, "IV"},
+			{1, "I"}
         };
 
 
@@ -60,7 +70,7 @@ namespace RomanConverter
                 if (number >= pair.Key)
                 {
                     retVal += pair.Value.JoinTimes(number/pair.Key);
-                    number = number%pair.Key;
+                    number = number % pair.Key;
                 }
             }
             return retVal;
