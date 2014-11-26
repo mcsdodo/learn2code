@@ -29,10 +29,20 @@ namespace RomanConverter
 
             Assert.AreEqual("XXXIV", ConvertToRoman(34));
             Assert.AreEqual("XXXIX", ConvertToRoman(39));
+
+
+            Assert.AreEqual("L", ConvertToRoman(50));
+            Assert.AreEqual("C", ConvertToRoman(100));
+            Assert.AreEqual("D", ConvertToRoman(500));
+            Assert.AreEqual("M", ConvertToRoman(1000));
         }
 
         private Dictionary<int, string> dict = new Dictionary<int, string>()
         {
+            {1000, "M"},
+            {500, "D"},
+            {100, "C"},
+            {50, "L"},
             {10, "X"},
             {9, "IX"},
             {5, "V"},
