@@ -52,6 +52,7 @@
   <ItemGroup>
     <Compile Include="ConvertToArabicExampleTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ConvertToRomanExampleTest.cs" />
     <Compile Include="StringExtensions.cs" />
   </ItemGroup>
   <Choose>
