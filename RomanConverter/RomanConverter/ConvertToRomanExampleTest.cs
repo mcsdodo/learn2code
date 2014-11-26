@@ -23,25 +23,37 @@ namespace RomanConverter
             Assert.AreEqual("XXX", ConvertToRoman(30));
 
             Assert.AreEqual("XXV", ConvertToRoman(25));
+
+            Assert.AreEqual("IV", ConvertToRoman(4));
+            Assert.AreEqual("IX", ConvertToRoman(9));
+
+            Assert.AreEqual("XXXIV", ConvertToRoman(34));
+            Assert.AreEqual("XXXIX", ConvertToRoman(39));
         }
+
+        private Dictionary<int, string> dict = new Dictionary<int, string>()
+        {
+            {10, "X"},
+            {9, "IX"},
+            {5, "V"},
+            {4, "IV"},
+            {1, "I"}
+        };
+
 
         private string ConvertToRoman(int number)
         {
             string retVal = string.Empty;
 
-            if (number >= 10)
+            foreach (KeyValuePair<int, string> pair in dict)
             {
-                retVal = "X".JoinTimes(number / 10);
-                number = number % 10;
+                if (number >= pair.Key)
+                {
+                    retVal += pair.Value.JoinTimes(number/pair.Key);
+                    number = number%pair.Key;
+                }
             }
-
-            if (number >= 5)
-            {
-                retVal += "V";
-                number = number % 5;
-            }
-
-            return retVal + "I".JoinTimes(number);
+            return retVal;
         }
     }
 }
