@@ -13,11 +13,26 @@ namespace RomanConverter
 			Assert.AreEqual("I", ConvertToRoman(1));
 			Assert.AreEqual("II", ConvertToRoman(2));
 			Assert.AreEqual("III", ConvertToRoman(3));
+
+			Assert.AreEqual("V", ConvertToRoman(5));
+			Assert.AreEqual("VI", ConvertToRoman(6));
+			Assert.AreEqual("VIII", ConvertToRoman(8));
 		}
 
 		private string ConvertToRoman(int number)
 		{
-		    return "I".JoinTimes(number);
+		    string retVal = string.Empty;
+		    if (number > 5)
+		    {
+		        retVal = "V";
+		        number = number - 5;
+		    }
+
+		    if (number == 5)
+		    {
+		        return "V";
+		    }
+		    return retVal + "I".JoinTimes(number);
 		}
 	}
 }
